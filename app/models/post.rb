@@ -26,7 +26,7 @@ class Post < ActiveRecord::Base
     where("created_at <?", Time.zone.today.beginning_of_day)
   end
 
-  if !params[:author].blank?
-    @posts = Post.by_author(params[:author])
-  elsif !params[:date].blank?
+  def self.by_author(author_id)
+    where(author: author_id)
+  end
 end

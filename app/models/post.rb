@@ -25,4 +25,8 @@ class Post < ActiveRecord::Base
   def self.old_news
     where("created_at <?", Time.zone.today.beginning_of_day)
   end
+
+  if !params[:author].blank?
+    @posts = Post.by_author(params[:author])
+  elsif !params[:date].blank?
 end
